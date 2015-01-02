@@ -22,6 +22,7 @@ my $opt_spec =
 GetOptionsWithCompletion(
     sub {
         my %args = @_;
+        return undef;
     },
     %$opt_spec,
 );
