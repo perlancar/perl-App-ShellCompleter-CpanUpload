@@ -10,6 +10,8 @@ use strict;
 use warnings;
 #use Log::Any '$log';
 
+use Complete::Util qw(complete_file);
+use Filename::Archive qw(check_archive_filename);
 use Getopt::Long::Complete qw(GetOptionsWithCompletion);
 
 die "This script is for shell completion only\n"
@@ -22,7 +24,20 @@ my $opt_spec =
 GetOptionsWithCompletion(
     sub {
         my %args = @_;
-        return undef;
+        my $type = $args{type};
+        my $word = $args{word};
+
+        if ($type eq 'arg') {
+            return {
+                words => complete_file(
+                    word => $word,
+                    filter => sub {
+                        -d($_[0]) || check_archive_filename(filename => $_);
+                    },
+                ),
+                path_sep => '/',
+            };
+        }
     },
     %$opt_spec,
 );
