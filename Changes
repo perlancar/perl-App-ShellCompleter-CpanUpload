@@ -1,5 +1,10 @@
 Revision history for App-ShellCompleter-CpanUpload
 
+0.03    2015-01-02 (PERLANCAR)
+
+	- Complete arg with dir|archive only.
+
+
 0.02    2015-01-02 (PERLANCAR)
 
 	- No functional changes.
