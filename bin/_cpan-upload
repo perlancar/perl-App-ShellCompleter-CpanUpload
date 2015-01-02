@@ -1,0 +1,45 @@
+#!perl
+
+# DATE
+# VERSION
+
+# FRAGMENT id=shcompgen-hint completer=1 for=cpan-upload
+
+use 5.010001;
+use strict;
+use warnings;
+#use Log::Any '$log';
+
+use Getopt::Long::Complete qw(GetOptionsWithCompletion);
+
+die "This script is for shell completion only\n"
+    unless $ENV{COMP_LINE};
+
+my $opt_spec =
+# COMMAND: perl -MGetopt::Long::Patch::DumpAndExit `which cpan-upload`
+;
+
+GetOptionsWithCompletion(
+    sub {
+        my %args = @_;
+    },
+    %$opt_spec,
+);
+
+# ABSTRACT: Shell completer for cpan-upload
+# PODNAME:
+
+=head1 SYNOPSIS
+
+To install, install this module and then in your bash (and/or bash startup
+file):
+
+ complete -C _cpan-upload cpan-upload
+
+or, you can use L<shcompgen> to do that for you automatically.
+
+Now L<cpan-upload> has bash completion:
+
+ % cpan-upload <tab>
+ % cpan-upload --ig<tab>
+
