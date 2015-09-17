@@ -10,7 +10,7 @@ use strict;
 use warnings;
 #use Log::Any '$log';
 
-use Complete::Util qw(complete_file);
+use Complete::File qw(complete_file);
 use Filename::Archive qw(check_archive_filename);
 use Getopt::Long::Complete qw(GetOptionsWithCompletion);
 
@@ -58,4 +58,3 @@ Now L<cpan-upload> has bash completion:
 
  % cpan-upload <tab>
  % cpan-upload --ig<tab>
-
